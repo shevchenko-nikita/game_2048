@@ -52,135 +52,153 @@ void Game::ProcessEvents()
 
 void Game::Update(Direction direction)
 {
-    if(direction == Direction::LEFT)
+    switch (direction)
     {
-        for(int i = 0; i < boardSize; ++i)
-        {
-            int id = 0;
-            for(int j = 0; j < boardSize; ++j)
-            {
-                int curVal = board.GetTileValue(i, j);
-                board.SetTileValue(i, j, 0);
-
-                int lastVal = board.GetTileValue(i, id);
-
-                if(curVal != 0)
-                {
-                    if(curVal == lastVal)
-                    {
-                        board.SetTileValue(i, id, lastVal + curVal);
-                        id += 1;
-                    }
-                    else
-                    {
-                        if(lastVal != 0)
-                        {
-                            id += 1;
-                        }
-
-                        board.SetTileValue(i, id, curVal);
-                    }
-                }
-            }
-        }
-    }
-
-    else if(direction == Direction::RIGHT)
-    {
-        for(int i = 0; i < boardSize; ++i)
-        {
-            int id = boardSize - 1;
-            for(int j = boardSize - 1; j >= 0; j -= 1)
-            {
-                int curVal = board.GetTileValue(i, j);
-                board.SetTileValue(i, j, 0);
-
-                int lastVal = board.GetTileValue(i, id);
-
-                if(curVal != 0)
-                {
-                    if(curVal == lastVal)
-                    {
-                        board.SetTileValue(i, id, lastVal + curVal);
-                        id -= 1;
-                    }
-                    else
-                    {
-                        if(lastVal != 0)
-                        {
-                            id -= 1;
-                        }
-
-                        board.SetTileValue(i, id, curVal);
-                    }
-                }
-            }
-        }
-    }
-    else if(direction == Direction::DOWN)
-    {
-        for(int j = 0; j < boardSize; ++j)
-        {
-            int id = boardSize - 1;
-            for(int i = boardSize - 1; i >= 0; --i)
-            {
-                int curVal = board.GetTileValue(i, j);
-                board.SetTileValue(i, j, 0);
-
-                int lastVal = board.GetTileValue(id, j);
-
-                if(curVal != 0)
-                {
-                    if(curVal == lastVal)
-                    {
-                        board.SetTileValue(id, j, lastVal + curVal);
-                        id -= 1;
-                    }
-                    else
-                    {
-                        if(lastVal != 0)
-                        {
-                            id -= 1;
-                        }
-
-                        board.SetTileValue(id, j, curVal);
-                    }
-                }
-            }
-        }
-    }
-    else if(direction == Direction::UP)
-    {
-        for(int j = 0; j < boardSize; ++j)
-        {
-            int id = 0;
-            for(int i = 0; i < boardSize; ++i)
-            {
-                int curVal = board.GetTileValue(i, j);
-                board.SetTileValue(i, j, 0);
-
-                int lastVal = board.GetTileValue(id, j);
-
-                if(curVal != 0)
-                {
-                    if(curVal == lastVal)
-                    {
-                        board.SetTileValue(id, j, lastVal + curVal);
-                        id += 1;
-                    }
-                    else
-                    {
-                        if(lastVal != 0)
-                        {
-                            id += 1;
-                        }
-
-                        board.SetTileValue(id, j, curVal);
-                    }
-                }
-            }
-        }
+        case Direction::LEFT:
+            MoveLeft();
+            break;
+        case Direction::RIGHT:
+            MoveRight();
+            break;
+        case Direction::UP:
+            MoveUp();
+            break;
+        case Direction::DOWN:
+            MoveDown();
+            break;
     }
 
     board.PrintBoard();
+}
+
+void Game::MoveLeft()
+{
+    for(int i = 0; i < boardSize; ++i)
+    {
+        int id = 0;
+        for(int j = 0; j < boardSize; ++j)
+        {
+            int curVal = board.GetTileValue(i, j);
+            board.SetTileValue(i, j, 0);
+
+            int lastVal = board.GetTileValue(i, id);
+
+            if(curVal != 0)
+            {
+                if(curVal == lastVal)
+                {
+                    board.SetTileValue(i, id, lastVal + curVal);
+                    id += 1;
+                }
+                else
+                {
+                    if(lastVal != 0)
+                    {
+                        id += 1;
+                    }
+
+                    board.SetTileValue(i, id, curVal);
+                }
+            }
+        }
+    }
+}
+
+void Game::MoveRight()
+{
+    for(int i = 0; i < boardSize; ++i)
+    {
+        int id = boardSize - 1;
+        for(int j = boardSize - 1; j >= 0; j -= 1)
+        {
+            int curVal = board.GetTileValue(i, j);
+            board.SetTileValue(i, j, 0);
+
+            int lastVal = board.GetTileValue(i, id);
+
+            if(curVal != 0)
+            {
+                if(curVal == lastVal)
+                {
+                    board.SetTileValue(i, id, lastVal + curVal);
+                    id -= 1;
+                }
+                else
+                {
+                    if(lastVal != 0)
+                    {
+                        id -= 1;
+                    }
+
+                    board.SetTileValue(i, id, curVal);
+                }
+            }
+        }
+    }
+}
+
+void Game::MoveUp()
+{
+    for(int j = 0; j < boardSize; ++j)
+    {
+        int id = 0;
+        for(int i = 0; i < boardSize; ++i)
+        {
+            int curVal = board.GetTileValue(i, j);
+            board.SetTileValue(i, j, 0);
+
+            int lastVal = board.GetTileValue(id, j);
+
+            if(curVal != 0)
+            {
+                if(curVal == lastVal)
+                {
+                    board.SetTileValue(id, j, lastVal + curVal);
+                    id += 1;
+                }
+                else
+                {
+                    if(lastVal != 0)
+                    {
+                        id += 1;
+                    }
+
+                    board.SetTileValue(id, j, curVal);
+                }
+            }
+        }
+    }
+}
+
+void Game::MoveDown()
+{
+    for(int j = 0; j < boardSize; ++j)
+    {
+        int id = boardSize - 1;
+        for(int i = boardSize - 1; i >= 0; --i)
+        {
+            int curVal = board.GetTileValue(i, j);
+            board.SetTileValue(i, j, 0);
+
+            int lastVal = board.GetTileValue(id, j);
+
+            if(curVal != 0)
+            {
+                if(curVal == lastVal)
+                {
+                    board.SetTileValue(id, j, lastVal + curVal);
+                    id -= 1;
+                }
+                else
+                {
+                    if(lastVal != 0)
+                    {
+                        id -= 1;
+                    }
+
+                    board.SetTileValue(id, j, curVal);
+                }
+            }
+        }
+    }
 }

@@ -21,6 +21,11 @@ public:
     void ProcessEvents();
     void Update(Direction direction);
 
+    void MoveLeft();
+    void MoveRight();
+    void MoveUp();
+    void MoveDown();
+
 private:
     sf::Window window;
     Board board;
