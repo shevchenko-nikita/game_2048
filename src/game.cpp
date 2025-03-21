@@ -9,13 +9,18 @@ void Game::Run()
 {
     while(window.isOpen())
     {
-        sf::Event event;
-        while(window.pollEvent(event))
+        ProcessEvents();
+    }
+}
+
+void Game::ProcessEvents()
+{
+    sf::Event event;
+    while(window.pollEvent(event))
+    {
+        if(event.type == sf::Event::Closed)
         {
-            if(event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
+            window.close();
         }
     }
 }

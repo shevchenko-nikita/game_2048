@@ -9,6 +9,8 @@ public:
     Game();
     void Run();
 
+    void ProcessEvents();
+
 private:
     sf::Window window;
     Board board;
