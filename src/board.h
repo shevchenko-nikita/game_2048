@@ -5,14 +5,16 @@
 class Board
 {
 public:
-    Board(int n_);
+    Board(int n);
 
     void Reset();
 
     int GetTileValue(int row, int col);
     void SetTileValue(int row, int col, int val);
 
+    void PrintBoard();
+
 private:
-    const int n; // board size
+    const int boardSize; // board size
     std::vector<std::vector<int>> board;
 };

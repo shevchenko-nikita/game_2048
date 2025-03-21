@@ -24,4 +24,6 @@ public:
 private:
     sf::Window window;
     Board board;
+
+    int boardSize;
 };
