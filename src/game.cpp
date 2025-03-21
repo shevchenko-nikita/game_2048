@@ -1,6 +1,7 @@
 #include "game.h"
 
 #include <random>
+#include <iostream>
 
 Game::Game() : board(4), boardSize(4)
 {
@@ -11,6 +12,12 @@ void Game::Run()
 {
     while(window.isOpen())
     {
+        if(IsOver())
+        {
+            std::cout << "Game over" << std::endl;
+            board.Reset();
+        }
+
         ProcessEvents();
     }
 }
@@ -228,4 +235,32 @@ void Game::GenerateTile()
             break;
         }
     }
+}
+
+bool Game::IsOver()
+{
+    for(int i = 0; i < boardSize; ++i)
+    {
+        for(int j = 0; j < boardSize; ++j)
+        {
+            int val = board.GetTileValue(i, j);
+
+            if(val == 0)
+            {
+                return false;
+            }
+
+            if(i && board.GetTileValue(i - 1, j) == val)
+            {
+                return false;
+            }
+
+            if(i && board.GetTileValue(i, j - 1) == val)
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
 }

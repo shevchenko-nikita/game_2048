@@ -21,6 +21,8 @@ public:
     void ProcessEvents();
     void Update(Direction direction);
 
+    bool IsOver();
+
     void GenerateTile();
 
     void MoveLeft();
