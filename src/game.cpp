@@ -1,6 +1,6 @@
 #include "game.h"
 
-Game::Game()
+Game::Game() : board(4)
 {
     window.create(sf::VideoMode({800, 600}), "2048");
 }
