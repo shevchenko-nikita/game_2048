@@ -3,7 +3,7 @@ project(game_2048)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(game_2048 main.cpp)
+add_executable(game_2048 src/main.cpp)
 
 set(SFML_DIR "C:/SFML/lib/cmake/SFML")
 
