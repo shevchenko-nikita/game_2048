@@ -1,7 +1,11 @@
 #include <iostream>
-#include <SFML/Window.hpp>
+
+#include "game.h"
 
 int main()
 {
-    sf::Window window(sf::VideoMode({800, 600}), "Test");
+
+    Game game;
+
+    game.Run();
 }
