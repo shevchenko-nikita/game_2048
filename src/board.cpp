@@ -8,9 +8,6 @@ Board::Board(int n) : boardSize(n)
     {
         row.assign(n, 0);
     }
-
-    board[0][boardSize - 1] = 3;
-    board[0][0] = 3;
 }
 
 void Board::Reset()
@@ -54,4 +51,5 @@ void Board::PrintBoard()
         }
         std::cout << std::endl;
     }
+    std::cout << std::endl;
 }

@@ -21,6 +21,8 @@ public:
     void ProcessEvents();
     void Update(Direction direction);
 
+    void GenerateTile();
+
     void MoveLeft();
     void MoveRight();
     void MoveUp();

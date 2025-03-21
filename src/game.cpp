@@ -1,5 +1,7 @@
 #include "game.h"
 
+#include <random>
+
 Game::Game() : board(4), boardSize(4)
 {
     window.create(sf::VideoMode({800, 600}), "2048");
@@ -68,6 +70,7 @@ void Game::Update(Direction direction)
             break;
     }
 
+    GenerateTile();
     board.PrintBoard();
 }
 
@@ -199,6 +202,30 @@ void Game::MoveDown()
                     board.SetTileValue(id, j, curVal);
                 }
             }
+        }
+    }
+}
+
+void Game::GenerateTile()
+{
+    int val = (rand() % 2 + 1) * 2; // either 2 or 4
+
+    std::vector<std::pair<int, int>> corners = {
+            {0, 0}, {0, boardSize - 1},
+            {boardSize - 1, 0}, {boardSize - 1, boardSize - 1}
+    };
+
+    std::shuffle(begin(corners), end(corners), std::mt19937(std::random_device()()));
+
+    for(const auto& cor : corners)
+    {
+        int row = cor.second;
+        int col = cor.first;
+
+        if(board.GetTileValue(row, col) == 0)
+        {
+            board.SetTileValue(row, col, val);
+            break;
         }
     }
 }
