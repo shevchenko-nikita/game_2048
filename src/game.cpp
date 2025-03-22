@@ -10,6 +10,8 @@ Game::Game() : board(4), boardSize(4)
 
 void Game::Run()
 {
+    GenerateTile();
+
     while(window.isOpen())
     {
         if(IsOver())
