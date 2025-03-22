@@ -222,10 +222,15 @@ void Game::GenerateTile()
 {
     int val = (rand() % 2 + 1) * 2; // either 2 or 4
 
-    std::vector<std::pair<int, int>> corners = {
-            {0, 0}, {0, boardSize - 1},
-            {boardSize - 1, 0}, {boardSize - 1, boardSize - 1}
-    };
+    std::vector<std::pair<int, int>> corners;
+
+    for(int i = 0; i < boardSize; ++i)
+    {
+        for(int j = 0; j < boardSize; ++j)
+        {
+            corners.emplace_back(i, j);
+        }
+    }
 
     std::shuffle(begin(corners), end(corners), std::mt19937(std::random_device()()));
 
