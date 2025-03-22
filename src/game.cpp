@@ -76,6 +76,8 @@ void Game::Update(Direction direction)
         case Direction::DOWN:
             MoveDown();
             break;
+        default:
+            return;
     }
 
     GenerateTile();
