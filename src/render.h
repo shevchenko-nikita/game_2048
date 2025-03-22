@@ -16,4 +16,5 @@ private:
     sf::RectangleShape tileShape;
     sf::Font font;
     sf::Text tileText;
+    sf::Text scoreText;
 };

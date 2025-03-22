@@ -1,7 +1,7 @@
 #include "board.h"
 #include <iostream>
 
-Board::Board(int n) : boardSize(n)
+Board::Board(int n) : boardSize(n), score(0)
 {
     board.resize(boardSize);
     for(auto& row : board)
@@ -12,6 +12,8 @@ Board::Board(int n) : boardSize(n)
 
 void Board::Reset()
 {
+    score = 0;
+
     for(std::size_t i = 0; i < boardSize; ++i)
     {
         for(std::size_t j = 0; j < boardSize; ++j)
@@ -39,6 +41,16 @@ void Board::SetTileValue(int row, int col, int val)
     }
 
     board[row][col] = val;
+}
+
+int Board::GetScore() const
+{
+    return score;
+}
+
+void Board::UpdateScore(int val)
+{
+    score += val;
 }
 
 void Board::PrintBoard()

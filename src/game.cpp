@@ -99,6 +99,7 @@ void Game::MoveLeft()
                 if(curVal == lastVal)
                 {
                     board.SetTileValue(i, id, lastVal + curVal);
+                    board.UpdateScore(lastVal + curVal);
                     id += 1;
                 }
                 else
@@ -132,6 +133,7 @@ void Game::MoveRight()
                 if(curVal == lastVal)
                 {
                     board.SetTileValue(i, id, lastVal + curVal);
+                    board.UpdateScore(lastVal + curVal);
                     id -= 1;
                 }
                 else
@@ -165,6 +167,7 @@ void Game::MoveUp()
                 if(curVal == lastVal)
                 {
                     board.SetTileValue(id, j, lastVal + curVal);
+                    board.UpdateScore(lastVal + curVal);
                     id += 1;
                 }
                 else
@@ -198,6 +201,7 @@ void Game::MoveDown()
                 if(curVal == lastVal)
                 {
                     board.SetTileValue(id, j, lastVal + curVal);
+                    board.UpdateScore(lastVal + curVal);
                     id -= 1;
                 }
                 else

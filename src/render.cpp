@@ -11,18 +11,27 @@ Render::Render()
     tileText.setFont(font);
     tileText.setCharacterSize(40);
     tileText.setFillColor(sf::Color::Black);
+
+    scoreText.setFont(font);
+    scoreText.setCharacterSize(30);
+    scoreText.setFillColor(sf::Color::Black);
 }
 
 void Render::Draw(sf::RenderWindow& window, const Board& board)
 {
     window.clear(sf::Color(205, 193, 180));
+
+    scoreText.setString("Score: " + std::to_string(board.GetScore()));
+    scoreText.setPosition(50, 30);
+    window.draw(scoreText);
+
     for(int row = 0; row < 4; ++row)
     {
         for(int col = 0; col < 4; ++col)
         {
             int value = board.GetTileValue(row, col);
 
-            tileShape.setPosition(50 + col * 100, 50 + row * 100);
+            tileShape.setPosition(50 + col * 100, 80 + row * 100);
             tileShape.setFillColor(GetTileColor(value));
             window.draw(tileShape);
 
