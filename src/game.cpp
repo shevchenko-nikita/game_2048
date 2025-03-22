@@ -5,7 +5,7 @@
 
 Game::Game() : board(4), boardSize(4)
 {
-    window.create(sf::VideoMode({800, 600}), "2048");
+    window.create(sf::VideoMode({500, 500}), "2048");
 }
 
 void Game::Run()
@@ -19,6 +19,7 @@ void Game::Run()
         }
 
         ProcessEvents();
+        render.Draw(window, board);
     }
 }
 
@@ -78,7 +79,7 @@ void Game::Update(Direction direction)
     }
 
     GenerateTile();
-    board.PrintBoard();
+//    board.PrintBoard();
 }
 
 void Game::MoveLeft()

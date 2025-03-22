@@ -9,7 +9,7 @@ public:
 
     void Reset();
 
-    int GetTileValue(int row, int col);
+    int GetTileValue(int row, int col) const;
     void SetTileValue(int row, int col, int val);
 
     void PrintBoard();

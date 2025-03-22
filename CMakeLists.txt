@@ -7,7 +7,8 @@ add_executable(
         game_2048
         src/main.cpp
         src/game.cpp
-        src/board.cpp)
+        src/board.cpp
+        src/render.cpp)
 
 set(SFML_DIR "C:/SFML/lib/cmake/SFML")
 

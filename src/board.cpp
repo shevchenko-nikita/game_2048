@@ -21,7 +21,7 @@ void Board::Reset()
     }
 }
 
-int Board::GetTileValue(int row, int col)
+int Board::GetTileValue(int row, int col) const
 {
     if(row < 0 || row >= boardSize || col < 0 || col >= boardSize)
     {

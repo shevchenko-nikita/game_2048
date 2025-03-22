@@ -2,6 +2,7 @@
 
 #include <SFML/Window.hpp>
 #include "board.h"
+#include "render.h"
 
 enum class Direction
 {
@@ -31,8 +32,9 @@ public:
     void MoveDown();
 
 private:
-    sf::Window window;
+    sf::RenderWindow window;
     Board board;
+    Render render;
 
     int boardSize;
 };
